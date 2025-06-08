@@ -1,0 +1,45 @@
+﻿<local:ThemeSwitchableWindow x:Class="ttvedit.AddColorDialog"
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:local="clr-namespace:ttvedit"
+		mc:Ignorable="d"
+		Title="色の追加..." Height="275" Width="550" Background="#0000" ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
+	<local:ThemeSwitchableWindow.Resources>
+		<Style TargetType="local:ButtonEx" BasedOn="{StaticResource LightDefSys}"/>
+		<Style TargetType="TextBlock" BasedOn="{StaticResource LightText}" x:Key="lt"/>
+	</local:ThemeSwitchableWindow.Resources>
+	<WindowChrome.WindowChrome>
+		<WindowChrome CaptionHeight="32" GlassFrameThickness="-1" UseAeroCaptionButtons="False" ResizeBorderThickness="0"/>
+	</WindowChrome.WindowChrome>
+	<Grid x:Name="rootGrid">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="32"/>
+			<RowDefinition/>
+		</Grid.RowDefinitions>
+		<Grid Grid.Row="0" x:Name="gr0" WindowChrome.IsHitTestVisibleInChrome="True">
+			<TextBlock Text="{Binding Title, RelativeSource={RelativeSource AncestorType=local:AddColorDialog}, Mode=OneWay}" Margin="10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{DynamicResource lt}"/>
+			<DockPanel HorizontalAlignment="Right" WindowChrome.IsHitTestVisibleInChrome="True">
+				<local:ButtonEx HitTestCode="20" Content="&#xE8BB;" x:Name="closeButton" Style="{StaticResource LightSysClose}" Width="32"/>
+			</DockPanel>
+		</Grid>
+		<Grid Grid.Row="1" Background="#E7E7E7" x:Name="gr1">
+			<StackPanel Margin="10">
+				<TextBlock Text="種別名:" VerticalAlignment="Center" Margin="0,0,5,0"/>
+				<TextBox x:Name="KeyBox" Margin="0,0,0,10"/>
+
+				<TextBlock Text="色コード (6桁Hexのみ):" VerticalAlignment="Center" Margin="0,0,5,0"/>
+				<DockPanel>
+					<TextBlock Text="#"/>
+					<TextBox Grid.Row="1" Grid.Column="1" x:Name="ColorBox" MaxLength="6" PreviewTextInput="ColorBox_PreviewTextInput" Margin="0,0,0,10" CommandManager.PreviewExecuted="ColorBox_PreviewExecuted"/>
+				</DockPanel>
+
+				<StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+					<Button Content="追加" Margin="5" Click="Add_Click"/>
+					<Button Content="キャンセル" Margin="5" Click="Cancel_Click"/>
+				</StackPanel>
+			</StackPanel>
+		</Grid>
+	</Grid>
+</local:ThemeSwitchableWindow>
