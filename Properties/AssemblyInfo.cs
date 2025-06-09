@@ -1,4 +1,4 @@
-using System.Reflection;
+﻿using System.Reflection;
 using System.Windows;
 [assembly: AssemblyTitle("ttvedit")]
 [assembly: AssemblyDescription("")]
@@ -10,5 +10,5 @@ using System.Windows;
 [assembly: AssemblyCulture("")]
 [assembly: System.Runtime.InteropServices.ComVisible(false)]
 [assembly: ThemeInfo(ResourceDictionaryLocation.None, ResourceDictionaryLocation.SourceAssembly)]
-[assembly: AssemblyVersion("0.9.1.1")]
-[assembly: AssemblyFileVersion("0.9.1.1")]
+[assembly: AssemblyVersion("0.9.1.2")]
+[assembly: AssemblyFileVersion("0.9.1.2")]
