@@ -1,4 +1,5 @@
 # ttvedit
+**latest: v0.9-rc.2**<br>
 Train timetable editor (rc version)
 
 Sorry, this repository is available on Japanese only!
