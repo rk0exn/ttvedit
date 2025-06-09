@@ -41,10 +41,18 @@ public partial class AddPatternDialog : ThemeSwitchableWindow
 
 	private void Add_Click(object sender, RoutedEventArgs e)
 	{
-		if (_existingKeys.Contains(KeyBox.Text)) return;
+		if (_existingKeys.Contains(KeyBox.Text))
+		{
+			MessageBox.Show("すでにこのパターンは存在しています。別のパターン名を使用してください。", "パターンエラー", MessageBoxButton.OK, MessageBoxImage.Warning);
+			return;
+		}
+		if (string.IsNullOrWhiteSpace(KeyBox.Text) || string.IsNullOrWhiteSpace(NextStationBox.Text) || string.IsNullOrWhiteSpace(DirectionBox.Text) || string.IsNullOrEmpty((string)TrainTypeBox.SelectedItem))
+		{
+			MessageBox.Show("パターンの内容が無効です。", "パターンエラー", MessageBoxButton.OK, MessageBoxImage.Warning);
+			return;
+		}
 
-		CreatedPattern = new KeyValuePair<string, TrainInfoWithoutTime>(
-			KeyBox.Text,
+		CreatedPattern = new KeyValuePair<string, TrainInfoWithoutTime>(KeyBox.Text,
 			new TrainInfoWithoutTime
 			{
 				Direction = DirectionBox.Text,

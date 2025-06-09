@@ -15,13 +15,18 @@
 			<RowDefinition Height="*"/>
 		</Grid.RowDefinitions>
 		<StackPanel Orientation="Vertical" Grid.Row="0" Margin="0 0 0 10">
-			<DockPanel LastChildFill="False" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3">
-				<Button Content="JSON読み込み" Command="{Binding LoadJsonCommand}" Margin="20,2"/>
-				<Button Content="上書き保存" Command="{Binding SaveJsonCommand}" Margin="20,2"/>
-				<Button Content="名前を付けて保存" Command="{Binding SaveAsJsonCommand}" Margin="20,2"/>
-				<Button Content="JSONを閉じる" Command="{Binding CloseJsonCommand}" Margin="20,2"/>
-				<Button Content="保存せずに破棄して閉じる" Command="{Binding DiscardJsonCommand}" Margin="20,2"/>
-			</DockPanel>
+			<Menu Margin="0,0,0,20" Background="#CCCCCC">
+				<MenuItem Header="ファイル(_F)">
+					<MenuItem Header="終了(_X)" Command="{Binding CloseWindowCommand}"/>
+				</MenuItem>
+				<MenuItem Header="操作(_A)">
+					<MenuItem Header="JSONを読み込む...(_L)" Command="{Binding LoadJsonCommand}"/>
+					<MenuItem Header="上書き保存(_S)" Command="{Binding SaveJsonCommand}"/>
+					<MenuItem Header="名前を付けて保存...(_V)" Command="{Binding SaveAsJsonCommand}"/>
+					<MenuItem Header="JSONを閉じる(_C)" Command="{Binding CloseJsonCommand}"/>
+					<MenuItem Header="変更を破棄して閉じる(_X)" Command="{Binding DiscardJsonCommand}"/>
+				</MenuItem>
+			</Menu>
 			<TextBox Text="{Binding StationName, UpdateSourceTrigger=PropertyChanged}"/>
 			<TextBox Text="{Binding UpdateTime, UpdateSourceTrigger=PropertyChanged}"/>
 			<TextBox Text="{Binding Comment, UpdateSourceTrigger=PropertyChanged}"/>
@@ -75,13 +80,13 @@
 				<DockPanel>
 					<Button Content="パターンの追加..." DockPanel.Dock="Top" Margin="5"
 				Command="{Binding AddPatternCommand}"/>
-					<DataGrid ItemsSource="{Binding PatternList}" AutoGenerateColumns="False" IsReadOnly="False">
+					<DataGrid ItemsSource="{Binding PatternList}" AutoGenerateColumns="False">
 						<DataGrid.Columns>
-							<DataGridTextColumn Header="キー" Binding="{Binding Key}" Width="140" IsReadOnly="True"/>
-							<DataGridTextColumn Header="方向" Binding="{Binding Value.Direction}" Width="140" IsReadOnly="True"/>
-							<DataGridTextColumn Header="種別" Binding="{Binding Value.TrainType}" Width="140" IsReadOnly="True"/>
-							<DataGridCheckBoxColumn Header="上り" Binding="{Binding Value.Upside}" Width="60" IsReadOnly="False"/>
-							<DataGridTextColumn Header="次駅" Binding="{Binding Value.NextStation}" Width="120" IsReadOnly="True"/>
+							<DataGridTextColumn Header="キー" Binding="{Binding Key}" Width="140"/>
+							<DataGridTextColumn Header="方向" Binding="{Binding Value.Direction}" Width="140"/>
+							<DataGridTextColumn Header="種別" Binding="{Binding Value.TrainType}" Width="140"/>
+							<DataGridCheckBoxColumn Header="上り" Binding="{Binding Value.Upside}" Width="60"/>
+							<DataGridTextColumn Header="次駅" Binding="{Binding Value.NextStation}" Width="120"/>
 							<DataGridTemplateColumn Header="操作" Width="80" IsReadOnly="True">
 								<DataGridTemplateColumn.CellTemplate>
 									<DataTemplate>

@@ -40,6 +40,11 @@ public partial class AddTrainDialog : ThemeSwitchableWindow
 	private void Add_Click(object sender, RoutedEventArgs e)
 	{
 		TargetDay = DayTypeBox.SelectedIndex == 0 ? DayTypeMode.Weekday : DayTypeMode.Holiday;
+		if (string.IsNullOrWhiteSpace(TimeBox.Text) || string.IsNullOrEmpty((string)PatternBox.SelectedItem))
+		{
+			MessageBox.Show("選択が無効な項目があります。", "項目エラー", MessageBoxButton.OK, MessageBoxImage.Warning);
+			return;
+		}
 		CreatedItem = new ExtTrainInfo
 		{
 			Time = TimeBox.Text,

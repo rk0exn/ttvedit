@@ -286,6 +286,11 @@ public class MainViewModel : INotifyPropertyChanged
 		}
 	});
 
+	public ICommand CloseWindowCommand => new RelayCommand(_ =>
+	{
+		MainWindow.Current.Close();
+	});
+
 	public ICommand SaveJsonCommand => new RelayCommand(_ =>
 	{
 		if (_loadedFilePath == null)

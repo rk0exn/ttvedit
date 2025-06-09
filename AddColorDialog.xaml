@@ -30,11 +30,26 @@
 				<TextBox x:Name="KeyBox" Margin="0,0,0,10"/>
 
 				<TextBlock Text="色コード (6桁Hexのみ):" VerticalAlignment="Center" Margin="0,0,5,0"/>
-				<DockPanel>
-					<TextBlock Text="#"/>
-					<TextBox Grid.Row="1" Grid.Column="1" x:Name="ColorBox" MaxLength="6" PreviewTextInput="ColorBox_PreviewTextInput" Margin="0,0,0,10" CommandManager.PreviewExecuted="ColorBox_PreviewExecuted"/>
-				</DockPanel>
-
+				<Grid Margin="0,0,0,10">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition/>
+						<ColumnDefinition Width="64"/>
+						<ColumnDefinition Width="18"/>
+					</Grid.ColumnDefinitions>
+					<DockPanel VerticalAlignment="Center">
+						<TextBlock Text="#"/>
+						<TextBox Grid.Row="1" Grid.Column="1" x:Name="ColorBox" MaxLength="6" PreviewTextInput="ColorBox_PreviewTextInput" CommandManager.PreviewExecuted="ColorBox_PreviewExecuted" TextChanged="ColorBox_TextChanged"/>
+					</DockPanel>
+					<TextBlock Text="色プレビュー: " Grid.Column="1" Margin="5,0,0,0"/>
+					<Border Grid.Column="2" Height="18" Width="18" HorizontalAlignment="Center" VerticalAlignment="Top" x:Name="colorPreview" BorderThickness="1">
+						<Border.BorderBrush>
+							<LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+								<GradientStop Color="#555" Offset="0.499999"/>
+								<GradientStop Color="#000" Offset="0.5"/>
+							</LinearGradientBrush>
+						</Border.BorderBrush>
+					</Border>
+				</Grid>
 				<StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
 					<Button Content="追加" Margin="5" Click="Add_Click"/>
 					<Button Content="キャンセル" Margin="5" Click="Cancel_Click"/>
